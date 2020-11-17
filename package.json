@@ -1,0 +1,26 @@
+{
+  "name": "ekladmin",
+  "version": "1.0.0",
+  "description": "Admin Portal for eatkravelove",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/michaelpaulcuccia/ekladmin.git"
+  },
+  "author": "Michael-Paul Cuccia",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/michaelpaulcuccia/ekladmin/issues"
+  },
+  "homepage": "https://github.com/michaelpaulcuccia/ekladmin#readme",
+  "dependencies": {
+    "concurrently": "^5.3.0",
+    "config": "^3.3.2",
+    "express": "^4.17.1",
+    "mongoose": "^5.10.15",
+    "nodemon": "^2.0.6"
+  }
+}
