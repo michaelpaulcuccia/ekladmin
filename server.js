@@ -10,9 +10,14 @@ connectDB();
 app.use(express.json({ extended: false }));
 
 //test route
+/*
 app.get('/', (req, res) => {
     res.send('working')
 })
+*/
+
+//routes
+app.use('/users', require('./routes/users'));
 
 const PORT = process.env.PORT || 5000;
 
