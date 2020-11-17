@@ -1,5 +1,6 @@
 const express = require('express');
 const connectDB = require('./config/db');
+const cors = require('cors')
 
 const app = express();
 
@@ -8,6 +9,8 @@ connectDB();
 
 //Middleware - get data from req.body in routes
 app.use(express.json({ extended: false }));
+
+app.use(cors());
 
 //test route
 /*
