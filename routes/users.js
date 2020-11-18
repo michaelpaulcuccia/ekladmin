@@ -105,6 +105,7 @@ router.get('/:id', async (req, res) => {
 router.put("/:id", async (req, res) => {
 
     //TODO - deconstruct res.body
+    console.log(req.body)
 
     let user = await User.find(req.params);
 
