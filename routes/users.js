@@ -79,49 +79,81 @@ router.get('/:id', async (req, res) => {
     //find User
     const data = await User.findById(req.params.id);
 
-
-    /*
-    { _id: 5fac306929f8002198e5501c,
-    name: 'michael',
-    email: 'michael@mail.com',
-    password: '$2b$10$vVltcfhySqZN20b2joQ06uGdGqTYZ6KXvze/Fvr5WsUZizeqdHeni',
-    }
-    */
-
-    //create an empty array
-    let dataArr = [];
-
-    data.forEach(item => {
+    try {
 
         //create an empty object
         let newObj = {}
 
         //set id instead of ._id
-        newObj.id = item._id
-        //set remaining fields as is 
-        newObj.name = item.name
-        newObj.email = item.email
-        newObj.password = item.password
+        newObj.id = data._id
+        //set remaining key-value pairs as is 
+        newObj.name = data.name
+        newObj.email = data.email
+        newObj.password = data.password
 
-        //add to new data object to array
-        dataArr.push(newObj);
-    });
+        res.send(newObj);
 
-    res.send(dataArr);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
 
-})
+});
 
-//ROUTE: /users/:id
-//DESCRIPTION: Edits a User 
-router.post('/:id', async (req, res) => {
+// //ROUTE: /users/:id
+// //DESCRIPTION: Edits a User 
+router.put("/:id", async (req, res) => {
 
-    console.log(req.body)
+    //TODO - deconstruct res.body
 
-    //destructure fields from req.body
+    let user = await User.find(req.params);
 
-    //build a new object to replace user in DB
+    try {
 
+        if (user) {
+            user = await User.findByIdAndUpdate({ _id: req.params.id }, { $set: req.body }, { new: true });
+            res.send(user);
+        }
 
-})
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+
+});
+
+// //ROUTE: /users/:id
+// //DESCRIPTION: Edits a User 
+// router.post('/:id', async (req, res) => {
+
+//     console.log(req.body)
+
+//     //destructure fields from req.body
+//     const { name, email, password } = req.body;
+
+//     //build a new object to replace user in DB
+//     const updateObj = {
+//         name: name,
+//         email: email,
+//         password: password,
+//         _id: req.params.id
+//     }
+
+//     try {
+
+//         let userDB = await User.findOne(req.user.id);
+//         console.log(userDB);
+
+//         if (userDB) {
+//             userDB = await User.findByIdAndUpdate({ _id: req.user.id }, { $set: updateObj }, { new: true });
+//             res.send(userDB);
+//         }
+
+//     } catch (err) {
+//         console.error(err.message);
+//         res.status(500).send('Server Error');
+//     }
+
+// })
 
 module.exports = router;
