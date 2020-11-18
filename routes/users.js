@@ -3,6 +3,7 @@ const router = express.Router();
 const User = require('../models/User');
 
 //ROUTE: /users
+//DESCRIPTION: Gets ALL users from DB for Admin Grid
 router.get('/', async (req, res) => {
 
     //pass an empty object as arg to get ALL docs in collection
@@ -46,6 +47,7 @@ router.get('/', async (req, res) => {
 });
 
 //ROUTE: /users/:id
+//DESCRIPTION: Deletes a User 
 router.delete('/:id', async (req, res) => {
 
     //find User
@@ -70,5 +72,56 @@ router.delete('/:id', async (req, res) => {
 
 });
 
+//ROUTE: /users/:id
+//DESCRIPTION: Get a User by ID
+router.get('/:id', async (req, res) => {
+
+    //find User
+    const data = await User.findById(req.params.id);
+
+
+    /*
+    { _id: 5fac306929f8002198e5501c,
+    name: 'michael',
+    email: 'michael@mail.com',
+    password: '$2b$10$vVltcfhySqZN20b2joQ06uGdGqTYZ6KXvze/Fvr5WsUZizeqdHeni',
+    }
+    */
+
+    //create an empty array
+    let dataArr = [];
+
+    data.forEach(item => {
+
+        //create an empty object
+        let newObj = {}
+
+        //set id instead of ._id
+        newObj.id = item._id
+        //set remaining fields as is 
+        newObj.name = item.name
+        newObj.email = item.email
+        newObj.password = item.password
+
+        //add to new data object to array
+        dataArr.push(newObj);
+    });
+
+    res.send(dataArr);
+
+})
+
+//ROUTE: /users/:id
+//DESCRIPTION: Edits a User 
+router.post('/:id', async (req, res) => {
+
+    console.log(req.body)
+
+    //destructure fields from req.body
+
+    //build a new object to replace user in DB
+
+
+})
 
 module.exports = router;
