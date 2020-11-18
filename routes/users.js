@@ -104,8 +104,7 @@ router.get('/:id', async (req, res) => {
 // //DESCRIPTION: Edits a User 
 router.put("/:id", async (req, res) => {
 
-    //TODO - deconstruct res.body
-    console.log(req.body)
+    //res.body =  { id: '', name: '', email: '', password: '' }
 
     let user = await User.find(req.params);
 
@@ -113,13 +112,14 @@ router.put("/:id", async (req, res) => {
 
         if (user) {
             user = await User.findByIdAndUpdate({ _id: req.params.id }, { $set: req.body }, { new: true });
-            res.send(user);
+            res.send(req.body);
         }
 
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Server Error');
     }
+
 
 });
 
