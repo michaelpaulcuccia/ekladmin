@@ -104,7 +104,8 @@ router.get('/:id', async (req, res) => {
 // //DESCRIPTION: Edits a User 
 router.put("/:id", async (req, res) => {
 
-    //res.body =  { id: '', name: '', email: '', password: '' }
+    //req.body =  { id: '', name: '', email: '', password: '' }
+    //req.params = { id: '' }
 
     let user = await User.find(req.params);
 
@@ -122,39 +123,5 @@ router.put("/:id", async (req, res) => {
 
 
 });
-
-// //ROUTE: /users/:id
-// //DESCRIPTION: Edits a User 
-// router.post('/:id', async (req, res) => {
-
-//     console.log(req.body)
-
-//     //destructure fields from req.body
-//     const { name, email, password } = req.body;
-
-//     //build a new object to replace user in DB
-//     const updateObj = {
-//         name: name,
-//         email: email,
-//         password: password,
-//         _id: req.params.id
-//     }
-
-//     try {
-
-//         let userDB = await User.findOne(req.user.id);
-//         console.log(userDB);
-
-//         if (userDB) {
-//             userDB = await User.findByIdAndUpdate({ _id: req.user.id }, { $set: updateObj }, { new: true });
-//             res.send(userDB);
-//         }
-
-//     } catch (err) {
-//         console.error(err.message);
-//         res.status(500).send('Server Error');
-//     }
-
-// })
 
 module.exports = router;
