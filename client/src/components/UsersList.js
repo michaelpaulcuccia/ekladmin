@@ -8,7 +8,7 @@ const UsersList = props => {
                 <TextField source='._id' />
                 <TextField source='name' />
                 <TextField source='email' />
-                <EditButton basePath='/users/:id' />
+                <EditButton basePath='/users' />
                 <DeleteButton basePath='/users' />
             </Datagrid>
         </List>
