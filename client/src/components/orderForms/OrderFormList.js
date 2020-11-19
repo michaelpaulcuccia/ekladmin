@@ -16,8 +16,8 @@ const OrderFormList = props => {
                 <TextField source='options' />
                 <TextField source='dietaryrestrictions' />
                 <TextField source='allergies' />
-                <EditButton basePath='/orderForms' />
-                <DeleteButton basePath='/orderForms' />
+                <EditButton basePath='/admin/orderForms' />
+                <DeleteButton basePath='/admin/orderForms' />
             </Datagrid>
         </List>
     )

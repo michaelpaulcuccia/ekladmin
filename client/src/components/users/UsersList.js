@@ -9,8 +9,8 @@ const UsersList = props => {
                 <TextField source='name' />
                 <EmailField source='email' />
                 <TextField source='password' />
-                <EditButton basePath='/users' />
-                <DeleteButton basePath='/users' />
+                <EditButton basePath='/admin/users' />
+                <DeleteButton basePath='/admin/users' />
             </Datagrid>
         </List>
     )
