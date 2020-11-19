@@ -9,8 +9,6 @@ router.get('/', async (req, res) => {
     //pass an empty object as arg to get ALL docs in collection
     const data = await OrderForm.find({});
 
-    console.log(data)
-
     try {
 
         //Set Response Headers
@@ -47,6 +45,32 @@ router.get('/', async (req, res) => {
         });
 
         res.send(dataArr);
+
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+
+});
+
+//ROUTE: /orderForms/:id
+//DESCRIPTION: Deletes an orderForm
+router.delete('/:id', async (req, res) => {
+
+    //find orderForm
+    const oF = await OrderForm.findById(req.params.id);
+
+    try {
+
+        //check if orderForm exists
+        if (!oF) {
+            return res.status(404).json({ msg: 'orderForm not found' });
+        }
+
+        //remove user from db
+        await oF.remove();
+
+        res.json({ msg: 'orderForm removed' });
 
     } catch (err) {
         console.error(err.message);
