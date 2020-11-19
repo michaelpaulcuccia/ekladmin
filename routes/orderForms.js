@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const OrderForm = require('../models/OrderForm');
 
-//ROUTE: /orderForms
+//ROUTE: /admin/orderForms
 //DESCRIPTION: Gets ALL orderForms from DB for Admin Grid
 router.get('/', async (req, res) => {
 
@@ -53,7 +53,7 @@ router.get('/', async (req, res) => {
 
 });
 
-//ROUTE: /orderForms/:id
+//ROUTE: /admin/orderForms/:id
 //DESCRIPTION: Deletes an orderForm
 router.delete('/:id', async (req, res) => {
 
@@ -76,6 +76,65 @@ router.delete('/:id', async (req, res) => {
         console.error(err.message);
         res.status(500).send('Server Error');
     }
+
+});
+
+//ROUTE: /admin/orderForm/:id
+//DESCRIPTION: Get an orderForm by ID
+router.get('/:id', async (req, res) => {
+
+    //find orderForm
+    const data = await OrderForm.findById(req.params.id);
+
+    try {
+
+        //create an empty object
+        let newObj = {}
+
+        //set id instead of ._id
+        newObj.id = data._id
+        //set remaining fields as is 
+        newObj.name = data.name
+        newObj.phone = data.phone
+        newObj.email = data.email
+        newObj.address = data.address
+        newObj.deliveryaddress = data.deliveryaddress
+        newObj.mumberofguests = data.mumberofguests
+        newObj.deliverydateandtime = data.deliverydateandtime
+        newObj.options = data.options
+        newObj.dietaryrestrictions = data.dietaryrestrictions
+        newObj.allergies = data.allergies
+
+        res.send(newObj);
+
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+
+});
+
+// //ROUTE: /admin/orderForm/:id
+// //DESCRIPTION: Edits an orderForm
+router.put("/:id", async (req, res) => {
+
+    //req.body =  { id: '', name: '', email: '', etc... }
+    //req.params = { id: '' }
+
+    let oF = await OrderForm.find(req.params);
+
+    try {
+
+        if (oF) {
+            oF = await OrderForm.findByIdAndUpdate({ _id: req.params.id }, { $set: req.body }, { new: true });
+            res.send(req.body);
+        }
+
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+
 
 });
 

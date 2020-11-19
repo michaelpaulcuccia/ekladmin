@@ -6,7 +6,7 @@ const OrderFormEdit = props => {
     return (
         <Edit title='Edit orderForm' {...props}>
             <SimpleForm>
-                <TextInput source='._id' />
+                <TextInput disabled source='id' />
                 <TextInput source='name' />
                 <TextInput source='phone' />
                 <TextInput source='email' />
