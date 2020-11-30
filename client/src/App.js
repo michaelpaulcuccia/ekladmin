@@ -8,7 +8,7 @@ import OrderFormEdit from './components/orderForms/OrderFormEdit';
 
 function App() {
   return (
-    <Admin dataProvider={restProvider('http://https://desolate-stream-40197.herokuapp.com')}>
+    <Admin dataProvider={restProvider('https://desolate-stream-40197.herokuapp.com')}>
       <Resource name='admin/users' list={UsersList} edit={UserEdit} />
       <Resource name='admin/orderForms' list={OrderFormList} edit={OrderFormEdit} />
     </Admin>
