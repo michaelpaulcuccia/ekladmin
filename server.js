@@ -5,7 +5,7 @@ const path = require('path');
 
 const app = express();
 
-const db = ''
+const db = 'mongodb+srv://ekladmin:11920sank@cluster0.iyihp.mongodb.net/<dbname>?retryWrites=true&w=majority'
 
 //connect database
 const connectDB = async () => {
