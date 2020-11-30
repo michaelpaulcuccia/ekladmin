@@ -1,11 +1,25 @@
 const express = require('express');
 const connectDB = require('./config/db');
+const mongoose = require('mongoose');
 const cors = require('cors');
 const path = require('path');
 
 const app = express();
 
+const db = 'mongodb+srv://ekladmin:11920sank@cluster0.iyihp.mongodb.net/<dbname>?retryWrites=true&w=majority'
+
 //connect database
+const connectDB = async () => {
+
+    try {
+        await mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false });
+        console.log('MongoDB Connected');
+    } catch (err) {
+        console.error(err.message);
+        //exit process with failure
+        process.exit(1);
+    }
+}
 connectDB();
 
 //Middleware - get data from req.body in routes
