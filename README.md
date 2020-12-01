@@ -1,3 +1,3 @@
 # ekladmin
 
-Test Version of Admin for eatkravelove
+Stand-Alone Admin Tool for eatkravelove
