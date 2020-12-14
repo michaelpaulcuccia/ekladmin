@@ -25,9 +25,9 @@ function App() {
   return (
     <Admin
       //PROD
-      //dataProvider={restProvider('https://desolate-stream-40197.herokuapp.com')}
+      dataProvider={restProvider('https://desolate-stream-40197.herokuapp.com')}
       //DEV
-      dataProvider={restProvider('http://localhost:3000')}
+      //dataProvider={restProvider('http://localhost:3000')}
       authProvider={authProvider}
     >
       <Resource name='admin/users' list={UsersList} edit={UserEdit} />

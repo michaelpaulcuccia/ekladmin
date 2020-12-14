@@ -1,17 +1,16 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const keys = require('./productionKeys')
 const path = require('path');
 
 const app = express();
-
-const db = "mongodb+srv://ekladmin:11920sank@cluster0.iyihp.mongodb.net/<dbname>?retryWrites=true&w=majority";
 
 //connect database
 const connectDB = async () => {
 
     try {
-        await mongoose.connect(db, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false });
+        await mongoose.connect(keys.mongoURI, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false });
         console.log('MongoDB Connected');
     } catch (err) {
         console.error(err.message);
