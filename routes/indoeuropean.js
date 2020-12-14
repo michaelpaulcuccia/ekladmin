@@ -1,14 +1,13 @@
 const express = require('express');
 const router = express.Router();
-const Indian = require('../models/Indian');
-//const mongoose = require('mongoose');
+const IndoEuropean = require('../models/IndoEuropean');
 
-//ROUTE: /admin/indian
-//DESCRIPTION: Gets ALL indian meals from DB for Admin Grid
+//ROUTE: /admin/indoeuropean
+//DESCRIPTION: Gets ALL indoeuropean meals from DB for Admin Grid
 router.get('/', async (req, res) => {
 
     //pass an empty object as arg to get ALL docs in collection
-    const data = await Indian.find({});
+    const data = await IndoEuropean.find({});
 
     try {
 
@@ -47,12 +46,12 @@ router.get('/', async (req, res) => {
 
 });
 
-//ROUTE: /admin/indian/:id
+//ROUTE: /admin/indoeuropean/:id
 //DESCRIPTION: Deletes a meal
 router.delete('/:id', async (req, res) => {
 
     //find orderForm
-    const meal = await Indian.findById(req.params.id);
+    const meal = await IndoEuropean.findById(req.params.id);
 
     try {
 
@@ -73,12 +72,12 @@ router.delete('/:id', async (req, res) => {
 
 });
 
-//ROUTE: /admin/indian/:id
+//ROUTE: /admin/indoeuropean/:id
 //DESCRIPTION: Get a meal by ID
 router.get('/:id', async (req, res) => {
 
     //find orderForm
-    const data = await Indian.findById(req.params.id);
+    const data = await IndoEuropean.findById(req.params.id);
 
     try {
 
@@ -101,19 +100,19 @@ router.get('/:id', async (req, res) => {
 
 });
 
-// //ROUTE: /admin/indian/:id
+// //ROUTE: /admin/indoeuropean/:id
 // //DESCRIPTION: Edits a meal
 router.put("/:id", async (req, res) => {
 
     //req.body =  { id: '', name: '', email: '', etc... }
     //req.params = { id: '' }
 
-    let meal = await Indian.find(req.params);
+    let meal = await IndoEuropean.find(req.params);
 
     try {
 
         if (meal) {
-            meal = await Indian.findByIdAndUpdate({ _id: req.params.id }, { $set: req.body }, { new: true });
+            meal = await IndoEuropean.findByIdAndUpdate({ _id: req.params.id }, { $set: req.body }, { new: true });
             res.send(req.body);
         }
 
@@ -123,38 +122,5 @@ router.put("/:id", async (req, res) => {
     }
 
 });
-
-//ROUTE: /admin/indian
-//DESCRIPTION: post new meal
-/*
-router.post('/', async (req, res) => {
-
-    console.log(req.body)
-
-    const { name, price, type } = req.body
-
-    //let makeId = mongoose.Types.ObjectId()
-
-    try {
-
-        //build from req 
-        //instantiate model new Indian({})
-        const newMeal = new Indian({
-            name: name,
-            price: price,
-            type: type,
-        });
-
-        await newMeal.save();
-
-        res.json('new meal successfully added')
-
-    } catch (err) {
-        console.error(err.message);
-        res.status(500).send({ msg: 'Server Error' });
-    }
-
-});
-*/
 
 module.exports = router;

@@ -4,7 +4,7 @@ import { Edit, SimpleForm, TextInput, } from 'react-admin';
 
 const IndianEdit = props => {
     return (
-        <Edit title='Edit orderForm' {...props}>
+        <Edit title='Edit Indian' {...props}>
             <SimpleForm>
                 <TextInput disabled source='id' />
                 <TextInput source='name' />

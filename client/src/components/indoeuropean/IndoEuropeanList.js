@@ -1,7 +1,7 @@
 import React from 'react';
 import { List, Datagrid, TextField, EditButton, DeleteButton } from 'react-admin';
 
-const IndianList = props => {
+const IndoEuropeanList = props => {
     return (
         <List {...props}>
             <Datagrid>
@@ -9,11 +9,11 @@ const IndianList = props => {
                 <TextField source='name' />
                 <TextField source='price' />
                 <TextField source='type' />
-                <EditButton basePath='/admin/indian' />
-                <DeleteButton basePath='/admin/indian' />
+                <EditButton basePath='/admin/indoeuropean' />
+                <DeleteButton basePath='/admin/indoeuropean' />
             </Datagrid>
         </List>
     )
 }
 
-export default IndianList;
+export default IndoEuropeanList;

@@ -2,9 +2,9 @@ import React from 'react';
 import { Edit, SimpleForm, TextInput, } from 'react-admin';
 
 
-const IndoChineseEdit = props => {
+const IndoEuropeanEdit = props => {
     return (
-        <Edit title='Edit IndoChinese' {...props}>
+        <Edit title='Edit IndoEuropean' {...props}>
             <SimpleForm>
                 <TextInput disabled source='id' />
                 <TextInput source='name' />
@@ -15,4 +15,4 @@ const IndoChineseEdit = props => {
     )
 }
 
-export default IndoChineseEdit;
+export default IndoEuropeanEdit;

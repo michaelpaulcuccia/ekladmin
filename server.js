@@ -5,7 +5,7 @@ const path = require('path');
 
 const app = express();
 
-const db = "";
+const db = "mongodb+srv://ekladmin:11920sank@cluster0.iyihp.mongodb.net/<dbname>?retryWrites=true&w=majority";
 
 //connect database
 const connectDB = async () => {
@@ -29,8 +29,10 @@ app.use(cors());
 //routes
 app.use('/admin/users', require('./routes/users'));
 app.use('/admin/orderForms', require('./routes/orderForms'));
+//menu routes
 app.use('/admin/indian', require('./routes/indian'));
 app.use('/admin/indochinese', require('./routes/indochinese'));
+app.use('/admin/indoeuropean', require('./routes/indoeuropean'));
 
 //serve static assets if in production
 if (process.env.NODE_ENV === 'production') {
