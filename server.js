@@ -35,6 +35,7 @@ app.use('/admin/indochinese', require('./routes/indochinese'));
 app.use('/admin/indoeuropean', require('./routes/indoeuropean'));
 app.use('/admin/indomexican', require('./routes/indomexican'));
 app.use('/admin/middleeastern', require('./routes/middleeastern'));
+app.use('/admin/soupssandwichessalads', require('./routes/soupssandwichessalads'));
 
 //serve static assets if in production
 if (process.env.NODE_ENV === 'production') {

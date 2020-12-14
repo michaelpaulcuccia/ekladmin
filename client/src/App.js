@@ -17,6 +17,8 @@ import IndoMexicanList from './components/indomexican/IndoMexicanList';
 import IndoMexicanEdit from './components/indomexican/IndoMexicanEdit';
 import MiddleEasternList from './components/middleeastern/MiddleEasternList';
 import MiddleEasternEdit from './components/middleeastern/MiddleEasternEdit';
+import SSSList from './components/soupssandwichessalads/SSSList';
+import SSSEdit from './components/soupssandwichessalads/SSSEdit';
 import authProvider from './authProvider';
 
 function App() {
@@ -37,6 +39,7 @@ function App() {
       <Resource name='admin/indoeuropean' list={IndoEuropeanList} edit={IndoEuropeanEdit} />
       <Resource name='admin/indomexican' list={IndoMexicanList} edit={IndoMexicanEdit} />
       <Resource name='admin/middleeastern' list={MiddleEasternList} edit={MiddleEasternEdit} />
+      <Resource name='admin/soupssandwichessalads' list={SSSList} edit={SSSEdit} />
     </Admin>
   );
 }
