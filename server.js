@@ -33,6 +33,8 @@ app.use('/admin/orderForms', require('./routes/orderForms'));
 app.use('/admin/indian', require('./routes/indian'));
 app.use('/admin/indochinese', require('./routes/indochinese'));
 app.use('/admin/indoeuropean', require('./routes/indoeuropean'));
+app.use('/admin/indomexican', require('./routes/indomexican'));
+app.use('/admin/middleeastern', require('./routes/middleeastern'));
 
 //serve static assets if in production
 if (process.env.NODE_ENV === 'production') {
