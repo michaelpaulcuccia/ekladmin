@@ -7,6 +7,8 @@ import OrderFormList from './components/orderForms/OrderFormList';
 import OrderFormEdit from './components/orderForms/OrderFormEdit';
 import IndianList from './components/indian/IndianList';
 import IndianEdit from './components/indian/IndianEdit';
+import IndoChineseList from './components/indochinese/IndoChineseList';
+import IndoChineseEdit from './components/indochinese/IndoChineseEdit';
 import authProvider from './authProvider';
 
 function App() {
@@ -19,6 +21,7 @@ function App() {
       <Resource name='admin/users' list={UsersList} edit={UserEdit} />
       <Resource name='admin/orderForms' list={OrderFormList} edit={OrderFormEdit} />
       <Resource name='admin/indian' list={IndianList} edit={IndianEdit} />
+      <Resource name='admin/indochinese' list={IndoChineseList} edit={IndoChineseEdit} />
     </Admin>
   );
 }

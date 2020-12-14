@@ -30,6 +30,7 @@ app.use(cors());
 app.use('/admin/users', require('./routes/users'));
 app.use('/admin/orderForms', require('./routes/orderForms'));
 app.use('/admin/indian', require('./routes/indian'));
+app.use('/admin/indochinese', require('./routes/indochinese'));
 
 //serve static assets if in production
 if (process.env.NODE_ENV === 'production') {
