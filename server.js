@@ -5,7 +5,7 @@ const path = require('path');
 
 const app = express();
 
-const db = ''
+const db = "";
 
 //connect database
 const connectDB = async () => {
@@ -29,6 +29,7 @@ app.use(cors());
 //routes
 app.use('/admin/users', require('./routes/users'));
 app.use('/admin/orderForms', require('./routes/orderForms'));
+app.use('/admin/indian', require('./routes/indian'));
 
 //serve static assets if in production
 if (process.env.NODE_ENV === 'production') {

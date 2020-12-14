@@ -22,4 +22,4 @@ const OrderFormEdit = props => {
     )
 }
 
-export default OrderFormEdit
+export default OrderFormEdit;
